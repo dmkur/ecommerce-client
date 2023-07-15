@@ -1,10 +1,12 @@
-import {Announcement, Navbar} from "../components";
+import {Announcement, Navbar, Slider} from "../components";
+
 
 const Home = () => {
     return (
         <div>
             <Announcement/>
             <Navbar/>
+            <Slider/>
         </div>
     )
 };
