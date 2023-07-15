@@ -3,7 +3,6 @@ import {Search} from "@mui/icons-material";
 import {Badge} from "@mui/material";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-
 const Container = styled.div`
   height: 60px;
 `
@@ -44,11 +43,17 @@ const Logo = styled.h1`
   font-weight: bold;
 `
 const Right = styled.div`
-  flex: 1`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  
+`
 
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
+  margin-left: 25px;
 `
 
 
@@ -60,7 +65,7 @@ const Navbar = () => {
                     <Language>EN</Language>
                     <SearchContainer>
                         <Input/>
-                        <Search/>
+                        <Search style={{color:'grey', fontSize:16}}/>
                     </SearchContainer>
                 </Left>
                 <Center>
@@ -71,7 +76,7 @@ const Navbar = () => {
                     <MenuItem>REGISTER</MenuItem>
                     <MenuItem>Sign in</MenuItem>
                     <MenuItem>
-                        <Badge badgeContent={4} color="primary">
+                        <Badge badgeContent={5} color="primary">
                             <ShoppingCartOutlinedIcon   />
                         </Badge>
                     </MenuItem>
