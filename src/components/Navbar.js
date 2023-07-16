@@ -69,7 +69,7 @@ const Navbar = () => {
                     </SearchContainer>
                 </Left>
                 <Center>
-                    <Logo>DM</Logo>
+                    <Logo>DM.</Logo>
                 </Center>
                 <Right>
 
