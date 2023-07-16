@@ -6,3 +6,4 @@ export * from "./CategoryItem";
 export * from "./Products";
 export * from "./Product";
 export * from "./Newsletter";
+export * from "./Footer";
