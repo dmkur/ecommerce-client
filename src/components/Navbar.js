@@ -29,9 +29,11 @@ const SearchContainer = styled.div`
   align-items: center;
   margin-left: 25px;
   padding: 5px;
+  cursor: pointer;
 `
 const Input = styled.input`
   border: none;
+  outline: none;
 `
 
 const Center = styled.div`
@@ -47,13 +49,14 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  
+
 `
 
 const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  
 `
 
 
@@ -65,7 +68,7 @@ const Navbar = () => {
                     <Language>EN</Language>
                     <SearchContainer>
                         <Input/>
-                        <Search style={{color:'grey', fontSize:16}}/>
+                        <Search style={{color: 'grey', fontSize: 16}}/>
                     </SearchContainer>
                 </Left>
                 <Center>
@@ -77,7 +80,7 @@ const Navbar = () => {
                     <MenuItem>Sign in</MenuItem>
                     <MenuItem>
                         <Badge badgeContent={5} color="primary">
-                            <ShoppingCartOutlinedIcon   />
+                            <ShoppingCartOutlinedIcon/>
                         </Badge>
                     </MenuItem>
                 </Right>
