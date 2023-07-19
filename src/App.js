@@ -4,8 +4,8 @@ import {ProductList} from "./pages";
 const App = () => {
     return (
         <div>
-            {/*<Home/>*/}
-            {/*<ProductList/>*/}
+            {/*<Register/>*/}
+            {/*<Product/>*/}
             <Cart/>
         </div>
     )
