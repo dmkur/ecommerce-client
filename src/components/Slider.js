@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {ArrowLeftOutlined, ArrowRightOutlined} from "@mui/icons-material";
 import {useState} from "react";
 import {sliderItems} from "../data"
+import {mobile} from "../responsive";
 
 const Container = styled.div`
   width: 100%;
@@ -10,6 +11,7 @@ const Container = styled.div`
 
   position: relative;
   overflow: hidden;
+  ${mobile({display:"none "})}
 `
 const Wrapper = styled.div`
   height: 100%;
@@ -32,6 +34,7 @@ const ImgContainer = styled.div`
 const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
+  
 `
 const Tittle = styled.h1`font-size: 70px`
 const Desc = styled.p`
