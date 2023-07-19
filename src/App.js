@@ -1,4 +1,4 @@
-import {Home, Product} from "./pages";
+import {Home, Login, Product, Register} from "./pages";
 import {ProductList} from "./pages";
 
 const App = () => {
@@ -6,7 +6,7 @@ const App = () => {
         <div>
             {/*<Home/>*/}
             {/*<ProductList/>*/}
-            <Product/>
+            <Login/>
         </div>
     )
 };
