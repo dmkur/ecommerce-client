@@ -1,3 +1,4 @@
+export * from "./MainLayout";
 export * from "./Cart";
 export * from "./Home";
 export * from "./ProductList";
