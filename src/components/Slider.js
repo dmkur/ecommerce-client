@@ -58,6 +58,7 @@ const Arrow = styled.div`
   width: 50px;
   height: 50px;
   background-color: #fcf5f5;
+  border: 1px solid #b0b0b0;
   border-radius: 50%;
   position: absolute;
   top: 0;
