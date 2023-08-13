@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {Announcement, Footer, Navbar, Newsletter} from "../components";
 import {Add, Remove} from "@mui/icons-material";
 import {mobile} from "../responsive";
+import {useParams} from "react-router-dom";
 
 const Container = styled.div`
 
@@ -111,6 +112,8 @@ const Button = styled.button`
 `;
 
 const ProductPage = () => {
+    const a = useParams()
+
     return (
         <Container>
             <Navbar/>

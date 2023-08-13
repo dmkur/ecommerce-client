@@ -41,8 +41,11 @@ const Option = styled.option`
 `
 
 const ProductList = () => {
-    const location = useLocation()
-    const cat = location.pathname.split('/')[2]
+    // альтернативний медот пошуку по URL
+    // const location = useLocation()
+    // const cat = location.pathname.split('/')[2]
+
+    const {category:cat} = useParams()
 
     const [sort, setSort] = useState('newest');
     const [filters, setFilters] = useState({});
