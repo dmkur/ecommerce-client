@@ -1,4 +1,3 @@
-import {popularProducts} from "../data";
 import styled from "styled-components";
 import {Product} from "./Product";
 import {useEffect, useState} from "react";
@@ -15,13 +14,14 @@ const Container = styled.div`
 const Products = ({sort, cat, filters}) => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
+    // console.log(cat)
+    // console.log(filteredProducts)
 
     useEffect(() => {
         const getProducts = async () => {
             try {
                 const {data} = await productsService.getAllProducts(cat)
                 setProducts(data)
-
             } catch (e) {
 
             }
@@ -39,10 +39,22 @@ const Products = ({sort, cat, filters}) => {
             .every(([key, value]) => item[key].includes(value))))
     }, [products, cat, filters])
 
-
+    useEffect(() => {
+        if (sort === "newest") {
+            setFilteredProducts((prev) => [...prev].sort((a, b) => a.createdAt - b.createdAt))
+        } else if (sort === "asc") {
+            setFilteredProducts((prev) => [...prev].sort((a, b) => a.price - b.price))
+        } else  {
+            setFilteredProducts((prev) => [...prev].sort((a, b) => b.price - a.price))
+        }
+    }, [sort,])
 
     return (<Container>
-        {filteredProducts.map(item => <Product item={item} key={item.id}/>)}
+        {
+            cat ? filteredProducts.map(item => <Product item={item} key={item.id}/>)
+            : products.slice(0,8).map(item => <Product item={item} key={item.id}/>)
+        }
+
     </Container>)
 };
 

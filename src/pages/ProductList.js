@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {Navbar, Announcement, Products, Newsletter, Footer} from "../components";
 import {mobile} from "../responsive";
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation, useParams, useSearchParams} from "react-router-dom";
 import {useState} from "react";
 
 
@@ -41,11 +41,14 @@ const Option = styled.option`
 `
 
 const ProductList = () => {
+    const a =useSearchParams()
+    console.log(a)
     const location = useLocation()
     const cat = location.pathname.split('/')[2]
 
     const [sort, setSort] = useState('newest');
     const [filters, setFilters] = useState({});
+    console.log(filters)
 
     const handleFilters = (e) => {
         e.preventDefault()
