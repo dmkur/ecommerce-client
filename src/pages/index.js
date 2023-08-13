@@ -1,7 +1,7 @@
 
-export * from "./Cart";
-export * from "./Home";
+export * from "./CartPage";
+export * from "./HomePage";
 export * from "./ProductList";
-export * from "./Product";
-export * from "./Login";
-export * from "./Register";
+export * from "./ProductPage";
+export * from "./LoginPage";
+export * from "./RegisterPage";

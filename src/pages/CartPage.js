@@ -151,7 +151,7 @@ const Button = styled.button`
 `;
 
 
-const Cart = () => {
+const CartPage = () => {
     return (
         <Container>
             <Navbar/>
@@ -249,4 +249,4 @@ const Cart = () => {
     )
 };
 
-export {Cart}
+export {CartPage}

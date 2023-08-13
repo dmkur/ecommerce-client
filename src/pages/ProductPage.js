@@ -110,7 +110,7 @@ const Button = styled.button`
   }
 `;
 
-const Product = () => {
+const ProductPage = () => {
     return (
         <Container>
             <Navbar/>
@@ -163,4 +163,4 @@ const Product = () => {
     )
 };
 
-export {Product}
+export {ProductPage}

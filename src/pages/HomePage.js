@@ -1,7 +1,7 @@
 import {Announcement, Categories, Footer, Navbar, Newsletter, Products, Slider} from "../components";
 
 
-const Home = () => {
+const HomePage = () => {
     return (
         <div>
             <Announcement/>
@@ -15,4 +15,4 @@ const Home = () => {
     )
 };
 
-export {Home}
+export {HomePage}
