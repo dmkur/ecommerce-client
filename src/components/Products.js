@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {Product} from "./Product";
 import {useEffect, useState} from "react";
-import {productsService} from "../services";
+import {productService} from "../services";
 
 
 const Container = styled.div`
@@ -18,7 +18,7 @@ const Products = ({sort, cat, filters}) => {
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const {data} = await productsService.getAllProducts(cat)
+                const {data} = await productService.getAllProducts(cat)
                 setProducts(data)
             } catch (e) {
 
