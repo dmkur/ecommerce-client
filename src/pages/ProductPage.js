@@ -3,6 +3,7 @@ import {Announcement, Footer, Navbar, Newsletter} from "../components";
 import {Add, Remove} from "@mui/icons-material";
 import {mobile} from "../responsive";
 import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 const Container = styled.div`
 
@@ -112,7 +113,15 @@ const Button = styled.button`
 `;
 
 const ProductPage = () => {
-    const a = useParams()
+    const {id} = useParams()
+    console.log(id)
+    const [product,setProduct] = useState({});
+
+    useEffect(() => {
+        const getProduct = (id) => {
+            
+        }
+    },[product])
 
     return (
         <Container>
