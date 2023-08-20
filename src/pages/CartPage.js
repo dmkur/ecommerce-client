@@ -4,10 +4,10 @@ import {Add, Remove} from "@mui/icons-material";
 import {mobile} from "../responsive";
 import {useSelector} from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
-import {constants} from "../constants/constants";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {stripeService} from "../services";
+import {useNavigate} from "react-router"
 
-const KEY = process.env
 
 const Container = styled.div``;
 
@@ -29,6 +29,7 @@ const Top = styled.div`
 `;
 
 const TopButton = styled.button`
+  cursor:pointer;
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
@@ -160,10 +161,23 @@ const Button = styled.button`
 const CartPage = () => {
     const {products, totalPrice} = useSelector(state => state.cartReducer);
     const [stripeToken, setStripeToken] = useState(null);
-    console.log(stripeToken)
+    const navigate = useNavigate()
+
     const onToken = (token) => {
         setStripeToken(token)
     }
+
+    useEffect(() => {
+        const makeRequest = async () => {
+            try {
+                const res = await stripeService.userRequest({tokenId: stripeToken, amount: totalPrice * 100})
+                navigate('/success', {data: res.data})
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        stripeToken && makeRequest()
+    }, [stripeToken, totalPrice, navigate])
 
     return (
         <Container>
@@ -182,7 +196,7 @@ const CartPage = () => {
                 <Bottom>
                     <Info>
                         {products && products.map(product => (<Product>
-                            <ProductDetail>
+                            <ProductDetail key={product._id}>
                                 <Image
                                     src={product.img}/>
                                 <Details>
@@ -236,9 +250,8 @@ const CartPage = () => {
                             description={`Your total is $${totalPrice}`}
                             amount={totalPrice * 100}
                             token={onToken}
-                            stripeKey={constants.REACT_APP_STRIPE}
-                        >
-                            <Button>CHECKOUT NOW</Button>
+                            stripeKey={process.env.REACT_APP_STRIPE}>
+                            <Button>CHECKOUT NOW!</Button>
                         </StripeCheckout>
                     </Summary>
                 </Bottom>
