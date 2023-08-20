@@ -3,6 +3,11 @@ import {Announcement, Footer, Navbar} from "../components";
 import {Add, Remove} from "@mui/icons-material";
 import {mobile} from "../responsive";
 import {useSelector} from "react-redux";
+import StripeCheckout from "react-stripe-checkout";
+import {constants} from "../constants/constants";
+import {useState} from "react";
+
+const KEY = process.env
 
 const Container = styled.div``;
 
@@ -154,7 +159,12 @@ const Button = styled.button`
 
 const CartPage = () => {
     const {products, totalPrice} = useSelector(state => state.cartReducer);
-    console.log(products)
+    const [stripeToken, setStripeToken] = useState(null);
+    console.log(stripeToken)
+    const onToken = (token) => {
+        setStripeToken(token)
+    }
+
     return (
         <Container>
             <Navbar/>
@@ -218,7 +228,18 @@ const CartPage = () => {
                             <SummaryItemText>Total</SummaryItemText>
                             <SummaryItemPrice>$ {totalPrice}</SummaryItemPrice>
                         </SummaryItem>
-                        <Button>CHECKOUT NOW</Button>
+                        <StripeCheckout
+                            name="DM. SHOP"
+                            image="https://avatars.githubusercontent.com/u/1486366?v=4"
+                            billingAddress
+                            shippingAddress
+                            description={`Your total is $${totalPrice}`}
+                            amount={totalPrice * 100}
+                            token={onToken}
+                            stripeKey={constants.REACT_APP_STRIPE}
+                        >
+                            <Button>CHECKOUT NOW</Button>
+                        </StripeCheckout>
                     </Summary>
                 </Bottom>
             </Wrapper>
