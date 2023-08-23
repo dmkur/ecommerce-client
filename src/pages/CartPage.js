@@ -7,6 +7,7 @@ import StripeCheckout from "react-stripe-checkout";
 import {useEffect, useState} from "react";
 import {stripeService} from "../services";
 import {useNavigate} from "react-router"
+import {constants} from "../constants";
 
 
 const Container = styled.div``;
@@ -29,10 +30,9 @@ const Top = styled.div`
 `;
 
 const TopButton = styled.button`
-  cursor:pointer;
+  cursor: pointer;
   padding: 10px;
   font-weight: 600;
-  cursor: pointer;
   border: ${(props) => props.type === "filled" && "none"};
   background-color: ${(props) =>
           props.type === "filled" ? "black" : "transparent"};
@@ -162,21 +162,26 @@ const CartPage = () => {
     const {products, totalPrice} = useSelector(state => state.cartReducer);
     const [stripeToken, setStripeToken] = useState(null);
     const navigate = useNavigate()
+    console.log(stripeToken)
 
     const onToken = (token) => {
         setStripeToken(token)
     }
 
+
     useEffect(() => {
         const makeRequest = async () => {
             try {
-                const res = await stripeService.userRequest({tokenId: stripeToken, amount: totalPrice * 100})
-                navigate('/success', {data: res.data})
+                const tokenId = stripeToken.id
+                const amount = totalPrice * 100
+
+                const {data} = await stripeService.userRequest({tokenId, amount})
+                navigate("/success", {state: {data}})
             } catch (e) {
                 console.log(e)
             }
         }
-        stripeToken && makeRequest()
+        stripeToken &&  makeRequest()
     }, [stripeToken, totalPrice, navigate])
 
     return (
@@ -195,32 +200,33 @@ const CartPage = () => {
                 </Top>
                 <Bottom>
                     <Info>
-                        {products && products.map(product => (<Product>
-                            <ProductDetail key={product._id}>
-                                <Image
-                                    src={product.img}/>
-                                <Details>
-                                    <ProductName>
-                                        <b>Product:</b> {product.title}
-                                    </ProductName>
-                                    <ProductId>
-                                        <b>ID:</b> {product._id}
-                                    </ProductId>
-                                    <ProductColor color={product.color}/>
-                                    <ProductSize>
-                                        <b>Size:</b> {product.size}
-                                    </ProductSize>
-                                </Details>
-                            </ProductDetail>
-                            <PriceDetail>
-                                <ProductAmountContainer>
-                                    <Add/>
-                                    <ProductAmount>{product.quantity}</ProductAmount>
-                                    <Remove/>
-                                </ProductAmountContainer>
-                                <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
-                            </PriceDetail>
-                        </Product>))}
+                        {products && products.map(product => (
+                            <Product key={product._id}>
+                                <ProductDetail>
+                                    <Image
+                                        src={product.img}/>
+                                    <Details>
+                                        <ProductName>
+                                            <b>Product:</b> {product.title}
+                                        </ProductName>
+                                        <ProductId>
+                                            <b>ID:</b> {product._id}
+                                        </ProductId>
+                                        <ProductColor color={product.color}/>
+                                        <ProductSize>
+                                            <b>Size:</b> {product.size}
+                                        </ProductSize>
+                                    </Details>
+                                </ProductDetail>
+                                <PriceDetail>
+                                    <ProductAmountContainer>
+                                        <Add/>
+                                        <ProductAmount>{product.quantity}</ProductAmount>
+                                        <Remove/>
+                                    </ProductAmountContainer>
+                                    <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
+                                </PriceDetail>
+                            </Product>))}
                         <Hr/>
 
                     </Info>
@@ -250,8 +256,8 @@ const CartPage = () => {
                             description={`Your total is $${totalPrice}`}
                             amount={totalPrice * 100}
                             token={onToken}
-                            stripeKey={process.env.REACT_APP_STRIPE}>
-                            <Button>CHECKOUT NOW!</Button>
+                            stripeKey={constants.STRIPE_PUBLIC_KEY}>
+                            <Button style={{cursor: 'pointer'}}>CHECKOUT NOW!</Button>
                         </StripeCheckout>
                     </Summary>
                 </Bottom>

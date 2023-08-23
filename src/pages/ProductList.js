@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {Navbar, Announcement, Products, Newsletter, Footer} from "../components";
 import {mobile} from "../responsive";
-import {useLocation, useParams, useSearchParams} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import {useState} from "react";
 
 

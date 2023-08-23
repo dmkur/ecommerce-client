@@ -123,7 +123,6 @@ const ProductPage = () => {
     const [size, setSize] = useState("");
     const dispatch = useDispatch();
 
-    console.log(product)
     useEffect(() => {
         const getProductById = async (id) => {
             try {

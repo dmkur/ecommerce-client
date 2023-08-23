@@ -1,4 +1,4 @@
-import {CartPage, HomePage, LoginPage, ProductPage, ProductList, RegisterPage} from "./pages";
+import {CartPage, HomePage, LoginPage, ProductPage, ProductList, RegisterPage, SuccessPage} from "./pages";
 import {Routes, Route} from "react-router-dom";
 import {MainLayout} from "./layouts";
 
@@ -15,6 +15,7 @@ const App = () => {
                 <Route path={'cart'} element={<CartPage/>}/>
                 <Route path={'login'} element={<LoginPage/>}/>
                 <Route path={'register'} element={<RegisterPage/>}/>
+                <Route path={'success'} element={<SuccessPage/>}/>
             </Route>
         </Routes>
 
