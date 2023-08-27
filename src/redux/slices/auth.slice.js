@@ -4,25 +4,25 @@ import {authService} from "../../services";
 const initialState = {
     currentUser: null,
     isFetching: false,
-    error: false
+    error: null
 }
 
 const login = createAsyncThunk(
     'authSlice/login',
-    async ({user}, rejectWithValue) => {
+    async (user, {rejectWithValue}) => {
         try {
-            console.log(user)
-            const {data} = await authService.login({user});
-            console.log(data)
+            const {data} = await authService.login(user);
+            // console.log(data)
             return data
         } catch (e) {
+            // console.log(e,'EEEEEEEEEEEEEEEEEEEEEE')
             return rejectWithValue(e.response.data)
         }
     }
 )
 
 const authSlice = createSlice({
-    name: "userSlice",
+    name: "authSlice",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -33,6 +33,20 @@ const authSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.currentUser = action.payload
                 state.isFetching = false
+
+            })
+            .addDefaultCase((state, action) => {
+                const [type] = action.type.split('/').splice(-1);
+                // type === 'rejected'
+                //     ? state.error = action.payload
+                //     : state.error = null
+                if (type === 'rejected') {
+                    state.error = action.payload
+                    state.isFetching = false
+                } else {
+                    state.error = null
+
+                }
             })
     }
 });
