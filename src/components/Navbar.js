@@ -53,6 +53,7 @@ const Center = styled.div`
 `
 const Logo = styled.h1`
   font-weight: bold;
+  color: black;
   ${mobile({fontSize: '24px'})}
 `
 const Right = styled.div`
@@ -86,7 +87,9 @@ const Navbar = () => {
                     </SearchContainer>
                 </Left>
                 <Center>
-                    <Link to={'/'}><Logo>DM.</Logo></Link>
+                    <Link to={'/'}>
+                        <Logo>DM.</Logo>
+                    </Link>
                 </Center>
                 <Right>
 

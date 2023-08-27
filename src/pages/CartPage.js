@@ -176,7 +176,7 @@ const CartPage = () => {
                 const amount = totalPrice * 100
 
                 const {data} = await stripeService.userRequest({tokenId, amount})
-                navigate("/success", {state: {data}})
+                navigate("/orders", {state: {data}})
             } catch (e) {
                 console.log(e)
             }

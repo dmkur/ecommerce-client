@@ -2,17 +2,11 @@ import {CartPage, HomePage, LoginPage, ProductPage, ProductList, RegisterPage, O
 import {Routes, Route} from "react-router-dom";
 import {MainLayout} from "./layouts";
 import {useSelector} from "react-redux";
-import {useEffect} from "react";
-import {useNavigate} from "react-router";
+
 
 
 const App = () => {
     const {currentUser} = useSelector(state => state.authReducer);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        if (currentUser) navigate('/')
-    }, [currentUser])
 
     return (
         <Routes>

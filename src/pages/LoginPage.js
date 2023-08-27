@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import {mobile} from "../responsive";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {authActions} from "../redux";
+import {useNavigate} from "react-router";
 
 const Container = styled.div`
   width: 100vw;
@@ -69,8 +70,13 @@ const ERROR = styled.span`
 const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
-    const {error, isFetching} = useSelector(state => state.authReducer);
+    const {currentUser,error, isFetching} = useSelector(state => state.authReducer);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (currentUser) navigate('/')
+    }, [currentUser])
 
 
     const handleLogin = (e) => {
