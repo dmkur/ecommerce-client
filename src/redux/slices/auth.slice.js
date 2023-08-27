@@ -31,19 +31,15 @@ const authSlice = createSlice({
             .addCase(login.fulfilled, (state, action) => {
                 state.currentUser = action.payload
                 state.isFetching = false
-
             })
             .addDefaultCase((state, action) => {
                 const [type] = action.type.split('/').splice(-1);
-                // type === 'rejected'
-                //     ? state.error = action.payload
-                //     : state.error = null
+
                 if (type === 'rejected') {
                     state.error = action.payload
                     state.isFetching = false
                 } else {
                     state.error = null
-
                 }
             })
     }
