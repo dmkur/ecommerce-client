@@ -8,8 +8,6 @@ import {useNavigate} from "react-router";
 
 const App = () => {
     const {currentUser} = useSelector(state => state.authReducer);
-    // console.log(currentUser)
-
     const navigate = useNavigate();
 
     useEffect(() => {
