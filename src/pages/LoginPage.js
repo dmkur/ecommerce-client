@@ -3,6 +3,7 @@ import {mobile} from "../responsive";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {authActions} from "../redux";
+import {useNavigate} from "react-router";
 
 const Container = styled.div`
   width: 100vw;
@@ -71,19 +72,16 @@ const LoginPage = () => {
     const [username, setUsername] = useState('');
     const {currentUser, error, isFetching} = useSelector(state => state.authReducer);
     const dispatch = useDispatch();
-    console.log(error, "ERROR")
-
+    const navigate = useNavigate()
 
     useEffect(() => {
-
-    }, [])
+        if (currentUser) navigate('/')
+    }, [currentUser])
 
     const handleLogin = (e) => {
         e.preventDefault()
-        console.log({username, password})
         dispatch(authActions.login({username, password}))
     }
-
 
     return (
         <Container>
@@ -94,10 +92,10 @@ const LoginPage = () => {
                     <Input placeholder="password" type={"password"}
                            onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button onClick={handleLogin}
-                            disabled={isFetching}
-                    >
-                        LOGIN
+                    <Button
+                        onClick={handleLogin}
+                        disabled={isFetching}
+                    >LOGIN
                     </Button>
                     {error && <ERROR>Something went wrong....</ERROR>}
                     <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
