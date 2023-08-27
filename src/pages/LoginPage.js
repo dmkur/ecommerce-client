@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import {mobile} from "../responsive";
+import {useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
+import {authActions} from "../redux";
 
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
-    ),
-    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-      center;
+  background: linear-gradient(rgba(255, 255, 255, 0.5),
+  rgba(255, 255, 255, 0.5)),
+  url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") center;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   width: 25%;
   padding: 20px;
   background-color: white;
-  ${mobile({width:"80%"})}
+  ${mobile({width: "80%"})}
 `;
 
 const Title = styled.h1`
@@ -58,14 +58,29 @@ const Link = styled.a`
 `;
 
 const LoginPage = () => {
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+
+    }, [])
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+        console.log({username, password})
+        dispatch(authActions.login({username, password}))
+    }
+
+
     return (
         <Container>
             <Wrapper>
                 <Title>SIGN IN</Title>
                 <Form>
-                    <Input placeholder="username" />
-                    <Input placeholder="password" />
-                    <Button>LOGIN</Button>
+                    <Input placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
+                    <Input placeholder="password" onChange={(e) => setPassword(e.target.value)}/>
+                    <Button onClick={handleLogin}>LOGIN</Button>
                     <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
                     <Link>CREATE A NEW ACCOUNT</Link>
                 </Form>

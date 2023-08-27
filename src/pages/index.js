@@ -5,4 +5,4 @@ export * from "./ProductList";
 export * from "./ProductPage";
 export * from "./LoginPage";
 export * from "./RegisterPage";
-export * from "./SuccessPage";
+export * from "./OrdersPage";

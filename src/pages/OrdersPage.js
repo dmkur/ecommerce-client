@@ -1,6 +1,6 @@
 import {useLocation} from "react-router-dom";
 
-const SuccessPage = () => {
+const OrdersPage = () => {
     const location = useLocation()
     console.log(location)
     return (
@@ -10,4 +10,4 @@ const SuccessPage = () => {
     )
 };
 
-export {SuccessPage}
+export {OrdersPage}
