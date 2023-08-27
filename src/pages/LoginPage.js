@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import {mobile} from "../responsive";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {authActions} from "../redux";
-import {useNavigate} from "react-router";
 
 const Container = styled.div`
   width: 100vw;
@@ -70,13 +69,9 @@ const ERROR = styled.span`
 const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
-    const {currentUser, error, isFetching} = useSelector(state => state.authReducer);
+    const {error, isFetching} = useSelector(state => state.authReducer);
     const dispatch = useDispatch();
-    const navigate = useNavigate()
 
-    useEffect(() => {
-        if (currentUser) navigate('/')
-    }, [currentUser])
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -89,14 +84,8 @@ const LoginPage = () => {
                 <Title>SIGN IN</Title>
                 <Form>
                     <Input placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
-                    <Input placeholder="password" type={"password"}
-                           onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Button
-                        onClick={handleLogin}
-                        disabled={isFetching}
-                    >LOGIN
-                    </Button>
+                    <Input placeholder="password" type={"password"} onChange={(e) => setPassword(e.target.value)}/>
+                    <Button onClick={handleLogin} disabled={isFetching}>LOGIN</Button>
                     {error && <ERROR>Something went wrong....</ERROR>}
                     <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
                     <Link>CREATE A NEW ACCOUNT</Link>

@@ -86,7 +86,7 @@ const Navbar = () => {
                     </SearchContainer>
                 </Left>
                 <Center>
-                    <Logo>DM.</Logo>
+                    <Link to={'/'}><Logo>DM.</Logo></Link>
                 </Center>
                 <Right>
 
