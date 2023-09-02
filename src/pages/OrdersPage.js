@@ -1,35 +1,39 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
+import {orderService} from "../services"
+import {useNavigate} from "react-router";
 
 const OrdersPage = () => {
     const location = useLocation()
-    const [orderId, setOrderId] = useState(null);
-
-    console.log(location)
-
-    // const data = location.state.data;
-    // const cart = location.state.cart;
+    const data = location.state.data;
+    const cart = location.state.cart;
     const {currentUser} = useSelector((state) => state.authReducer);
-    console.log(currentUser)
+    const [orderId, setOrderId] = useState(null);
+    const navigate = useNavigate()
 
-    // useEffect(() => {
-    //     const createOrder = async () => {
-    //         try {
-    //             const res = await userRequest.post("/orders", {
-    //                 userId: currentUser._id,
-    //                 products: cart.products.map((item) => ({
-    //                     productId: item._id,
-    //                     quantity: item._quantity,
-    //                 })),
-    //                 amount: cart.total,
-    //                 address: data.billing_details.address,
-    //             });
-    //             setOrderId(res.data._id);
-    //         } catch {}
-    //     };
-    //     data && createOrder();
-    // }, [cart, data, currentUser]);
+    useEffect(() => {
+        const createOrder = async () => {
+            try {
+                const {data: res} = await orderService.createProducts({
+                    userId: currentUser._id,
+                    products: cart.map((item) => ({
+                        productId: item._id,
+                        quantity: item.quantity
+                    })),
+                    amount: data.amount,
+                    address: data.billing_details.address
+                })
+                setOrderId(res._id)
+            } catch {
+            }
+        };
+        data && createOrder();
+    }, [cart, data, currentUser]);
+
+    const handleClick = () => {
+        navigate('/')
+    };
 
     return (
         <div
@@ -44,7 +48,7 @@ const OrdersPage = () => {
             {orderId
                 ? `Order has been created successfully. Your order number is ${orderId}`
                 : `Successfull. Your order is being prepared...`}
-            <button style={{ padding: 10, marginTop: 20 }}>Go to Homepage</button>
+            <button style={{padding: 10, marginTop: 20}} onClick={handleClick}>Go to Homepage</button>
         </div>
     )
 };

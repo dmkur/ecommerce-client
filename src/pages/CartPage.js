@@ -62,6 +62,7 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
   ${mobile({flexDirection: 'column'})}
 `;
 
@@ -162,7 +163,7 @@ const CartPage = () => {
     const {products, totalPrice} = useSelector(state => state.cartReducer);
     const [stripeToken, setStripeToken] = useState(null);
     const navigate = useNavigate()
-    console.log(stripeToken)
+
 
     const onToken = (token) => {
         setStripeToken(token)
@@ -176,12 +177,12 @@ const CartPage = () => {
                 const amount = totalPrice * 100
 
                 const {data} = await stripeService.userRequest({tokenId, amount})
-                navigate("/orders", {state: {data}})
+                navigate("/orders", {state: {data, cart: products}})
             } catch (e) {
                 console.log(e)
             }
         }
-        stripeToken &&  makeRequest()
+        stripeToken && makeRequest()
     }, [stripeToken, totalPrice, navigate])
 
     return (

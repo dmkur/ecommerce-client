@@ -1,9 +1,10 @@
 import {axiosService} from "./axios.service";
 import {urls} from "../constants";
 
-const productService = {
-    getAllProducts:(params={}) => axiosService.get(urls.products, {params:{category:params}}),
-    getProductById:(id) => axiosService.get(urls.products+`/find/${id}` )
+const orderService = {
+    getAllProducts:(params={}) => axiosService.get(urls.orders, {params:{category:params}}),
+    createProducts:(data) => axiosService.post(urls.orders, data ),
+    getProductById:(id) => axiosService.get(urls.orders+`/find/${id}` ),
 }
 
-export {productService}
+export {orderService}
