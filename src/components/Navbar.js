@@ -8,6 +8,9 @@ import {Link} from "react-router-dom";
 
 
 const Container = styled.div`
+  a{
+    text-decoration: none;
+  }
   height: 60px;
   ${mobile({height: '50px'})}
 `
@@ -47,8 +50,10 @@ const Input = styled.input`
 `
 
 const Center = styled.div`
+  
   flex: 1;
   text-align: center;
+  
 
 `
 const Logo = styled.h1`
@@ -93,8 +98,8 @@ const Navbar = () => {
                 </Center>
                 <Right>
 
-                    <MenuItem>REGISTER</MenuItem>
-                    <MenuItem>SIGHT IN</MenuItem>
+                    <Link to={'/register'}><MenuItem>REGISTER</MenuItem></Link>
+                    <Link to={'/login'}><MenuItem>SIGHT IN</MenuItem></Link>
                     <Link to={"/cart"}>
                         <MenuItem>
                             <Badge badgeContent={cartQuantity} color="primary">
