@@ -1,15 +1,9 @@
 import axios from "axios";
 import {baseURL} from "../constants";
 
-let token = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).authReducer).currentUser
-
-// console.log(token,'LOL1');
-
-const accessToken = token !== null
-? JSON.parse(JSON.parse(localStorage.getItem("persist:root")).authReducer).currentUser.accessToken
-: null
-
-// console.log(accessToken,'LOL2');
+const user =JSON.parse(localStorage.getItem("persist:root"))?.authReducer
+const currentUser =user && JSON.parse(user).currentUser
+const TOKEN = currentUser?.accessToken
 
 const axiosService = axios.create({
     baseURL,
@@ -17,7 +11,7 @@ const axiosService = axios.create({
 
 const axiosServiceWithToken = axios.create({
     baseURL,
-    headers: {Authorization: accessToken}
+    headers: {Authorization: TOKEN}
 });
 
 export {axiosService, axiosServiceWithToken}
