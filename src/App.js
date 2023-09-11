@@ -1,13 +1,8 @@
 import {CartPage, HomePage, LoginPage, ProductPage, ProductList, RegisterPage, OrdersPage} from "./pages";
 import {Routes, Route} from "react-router-dom";
 import {MainLayout} from "./layouts";
-import {useSelector} from "react-redux";
-
-
 
 const App = () => {
-    const {currentUser} = useSelector(state => state.authReducer);
-
     return (
         <Routes>
             <Route path={'/'} element={<MainLayout/>}>
