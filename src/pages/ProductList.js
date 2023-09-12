@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import {Navbar, Announcement, Products, Newsletter, Footer} from "../components";
+import {Navbar, Products, Newsletter, Footer} from "../components";
 import {mobile} from "../responsive";
-import {useLocation, useParams} from "react-router-dom";
+import { useParams} from "react-router-dom";
 import {useState} from "react";
 
 
@@ -61,8 +61,7 @@ const ProductList = () => {
 
     return (
         <Container>
-            <Navbar/>
-            <Announcement/>
+            <Navbar/>           
             <Tittle>{cat}</Tittle>
             <FilterContainer>
                 <Filter>

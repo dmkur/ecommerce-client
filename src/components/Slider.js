@@ -1,4 +1,4 @@
-import styled, {StyleSheetManager} from "styled-components";
+import styled from "styled-components";
 import {ArrowLeftOutlined, ArrowRightOutlined} from "@mui/icons-material";
 import {useState} from "react";
 import {sliderItems} from "../data"
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 
 
 const Image = styled.img`
-  height: 80%;
+  height: 70%;
   width: 80%;
   flex: 1
 `
