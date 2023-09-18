@@ -150,7 +150,7 @@ const ProductPage = () => {
     return (
         <Container>
             <Navbar/>
-            <Announcement/>
+            
             <Wrapper>
                 <ImgContainer>
                     <Img src={product.img}/>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Announcement, Footer, Navbar} from "../components";
+import {Footer, Navbar} from "../components";
 import {Add, Remove} from "@mui/icons-material";
 import {mobile} from "../responsive";
 import {useSelector} from "react-redux";
@@ -7,6 +7,7 @@ import StripeCheckout from "react-stripe-checkout";
 import {useEffect, useState} from "react";
 import {stripeService} from "../services";
 import {useNavigate} from "react-router"
+import {Link} from "react-router-dom"
 import {constants} from "../constants";
 
 
@@ -188,11 +189,11 @@ const CartPage = () => {
     return (
         <Container>
             <Navbar/>
-            <Announcement/>
+          
             <Wrapper>
                 <Title>YOUR BAG</Title>
                 <Top>
-                    <TopButton>CONTINUE SHOPPING</TopButton>
+                    <Link to={'/'}><TopButton>CONTINUE SHOPPING</TopButton></Link>
                     <TopTexts>
                         <TopText>Shopping Bag(2)</TopText>
                         <TopText>Your Wishlist (0)</TopText>
