@@ -61,6 +61,7 @@ const FilterTitle = styled.span`
 `;
 
 const FilterColor = styled.div`
+  border: 1px solid lightblue;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -150,7 +151,7 @@ const ProductPage = () => {
     return (
         <Container>
             <Navbar/>
-            
+
             <Wrapper>
                 <ImgContainer>
                     <Img src={product.img}/>
