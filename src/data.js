@@ -12,7 +12,7 @@ export const sliderItems = [
         title: "AUTUMN COLLECTION",
         desc: " 20% OFF FOR TWO AND MORE",
         bg: "fcf1ed",
-    },    
+    },
     {
         id: 4,
         img: "https://img.freepik.com/free-photo/loving-girl-making-heart-with-her-hands_1149-1306.jpg?t=st=1694513466~exp=1694514066~hmac=02e8164c8228c483949215d1242402cdca68803f14c92acd950f712a99614318",
@@ -31,8 +31,8 @@ export const categories = [
     {
         id: 2,
         img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        title: "LOUNGEWEAR LOVE",
-        cat:"man"
+        title: "WOMAN T-SHIRT",
+        cat:"woman"
     },
     {
         id: 3,
