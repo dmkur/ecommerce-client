@@ -7,15 +7,19 @@ import {useNavigate} from "react-router";
 const OrdersPage = () => {
     const location = useLocation()
     const data = location.state.data;
+
     const cart = location.state.cart;
     const {currentUser} = useSelector((state) => state.authReducer);
     const [orderId, setOrderId] = useState(null);
     const navigate = useNavigate()
 
+
+
     useEffect(() => {
         const createOrder = async () => {
+
             try {
-                const {data: res} = await orderService.createProducts({
+                const {data: res} = await orderService.createOrder({
                     userId: currentUser._id,
                     products: cart.map((item) => ({
                         productId: item._id,
