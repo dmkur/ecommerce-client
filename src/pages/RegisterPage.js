@@ -60,8 +60,8 @@ const RegisterPage = () => {
             <Wrapper>
                 <Title>CREATE AN ACC</Title>
                 <Form>
-                    <Input placeholder="name" />
-                    <Input placeholder="last name" />
+                    {/* <Input placeholder="name" />
+                    <Input placeholder="last name" /> */}
                     <Input placeholder="username" />
                     <Input placeholder="email" />
                     <Input placeholder="password" />
