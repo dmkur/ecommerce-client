@@ -94,9 +94,7 @@ const Navbar = () => {
           </Link>
         </Center>
         <Right>
-          <Link to={"https://dmkur.github.io/react-admin-panel"}>
-            <MenuItem>FOR ADMINS</MenuItem>
-          </Link>
+          
           <Link to={"/register"}>
             <MenuItem>REGISTER</MenuItem>
           </Link>

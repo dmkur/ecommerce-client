@@ -67,6 +67,8 @@ const ERROR = styled.span`
   color: red;
 `
 
+const MenuItem = styled.div``
+
 const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
@@ -95,6 +97,9 @@ const LoginPage = () => {
                     {error && <ERROR>Something went wrong....</ERROR>}
                     <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
                     <Link>CREATE A NEW ACCOUNT</Link>
+                    <Link to={"https://dmkur.github.io/react-admin-panel"}>
+                      <MenuItem>FOR ADMINS</MenuItem>
+                    </Link>
                 </Form>
             </Wrapper>
         </Container>
