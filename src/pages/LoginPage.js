@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {authActions} from "../redux";
 import {useNavigate} from "react-router";
+import {Link} from "react-router-dom"
 
 const Container = styled.div`
   width: 100vw;
@@ -56,16 +57,25 @@ const Button = styled.button`
   }
 `;
 
-const Link = styled.a`
+const LinkText = styled.span`
+ 
   margin: 5px 0px;
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
+  & a {
+    color:grey;
+  }
+  & a:hover{
+    color:black
+  }
 `;
 
 const ERROR = styled.span`
   color: red;
 `
+
+const MenuItem = styled.div``
 
 const LoginPage = () => {
     const [password, setPassword] = useState('');
@@ -93,8 +103,11 @@ const LoginPage = () => {
                     <Input placeholder="password" type={"password"} onChange={(e) => setPassword(e.target.value)}/>
                     <Button onClick={handleLogin} disabled={isFetching}>LOGIN</Button>
                     {error && <ERROR>Something went wrong....</ERROR>}
-                    <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
-                    <Link>CREATE A NEW ACCOUNT</Link>
+                    <LinkText>DO NOT YOU REMEMBER THE PASSWORD?</LinkText>
+                    <LinkText><Link to={'/register'}>CREATE A NEW ACCOUNT</Link></LinkText>
+                    <LinkText> <Link to={"https://dmkur.github.io/react-admin-panel"}>
+                      <MenuItem>FOR ADMINS</MenuItem>
+                    </Link></LinkText>
                 </Form>
             </Wrapper>
         </Container>
