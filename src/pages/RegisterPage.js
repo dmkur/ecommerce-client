@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {mobile} from "../responsive";
 
@@ -43,6 +44,9 @@ const Input = styled.input`
 const Agreement = styled.span`
   font-size: 12px;
   margin: 20px 0px;
+  & a {
+      cursor:pointer;
+  }
 `;
 
 const Button = styled.button`
@@ -53,6 +57,7 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
 `;
+
 
 const RegisterPage = () => {
     return (
@@ -66,10 +71,13 @@ const RegisterPage = () => {
                     <Input placeholder="email" />
                     <Input placeholder="password" />
                     <Input placeholder="confirm password" />
+                    
                     <Agreement>
+                        Already have acc? <Link to={'/login'}>Sign in</Link><br/>
                         By creating an account, I consent to the processing of my personal
                         data in accordance with the <b>PRIVACY POLICY</b>
                     </Agreement>
+                    
                     <Button>CREATE</Button>
                 </Form>
 
