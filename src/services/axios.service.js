@@ -4,6 +4,7 @@ import {baseURL} from "../constants";
 const user =JSON.parse(localStorage.getItem("persist:root"))?.authReducer
 const currentUser =user && JSON.parse(user).currentUser
 const TOKEN = currentUser?.accessToken
+console.log(TOKEN,"TOKEN");
 
 const axiosService = axios.create({
     baseURL,
