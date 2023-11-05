@@ -6,10 +6,13 @@ import {useNavigate} from "react-router";
 
 const OrdersPage = () => {
     const location = useLocation()
+    console.log(location,'location');
     const data = location.state.data;
 
     const cart = location.state.cart;
-    const {currentUser} = useSelector((state) => state.authReducer);
+    console.log(cart,'cart')
+
+    const {currentUser, accessToken} = useSelector((state) => state.authReducer);
     const [orderId, setOrderId] = useState(null);
     const navigate = useNavigate()
 
@@ -17,7 +20,6 @@ const OrdersPage = () => {
 
     useEffect(() => {
         const createOrder = async () => {
-
             try {
                 const {data: res} = await orderService.createOrder({
                     userId: currentUser._id,
@@ -29,7 +31,8 @@ const OrdersPage = () => {
                     address: data.billing_details.address
                 })
                 setOrderId(res._id)
-            } catch {
+            } catch (e) {
+                console.log(e.message, "ERROR createOrder");
             }
         };
         data && createOrder();
