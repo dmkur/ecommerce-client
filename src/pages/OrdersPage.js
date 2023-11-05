@@ -16,8 +16,6 @@ const OrdersPage = () => {
     const [orderId, setOrderId] = useState(null);
     const navigate = useNavigate()
 
-
-
     useEffect(() => {
         const createOrder = async () => {
             try {

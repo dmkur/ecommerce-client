@@ -81,6 +81,7 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const {currentUser,error, isFetching} = useSelector(state => state.authReducer);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

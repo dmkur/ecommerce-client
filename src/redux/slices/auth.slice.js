@@ -12,6 +12,7 @@ const login = createAsyncThunk(
     async (user, {rejectWithValue}) => {
         try {
             const {data} = await authService.login(user);
+            console.log(data,"SLICE")
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -19,10 +20,16 @@ const login = createAsyncThunk(
     }
 )
 
+
 const authSlice = createSlice({
     name: "authSlice",
     initialState,
-    reducers: {},
+    reducers: {
+        logout: (state) => {
+            state.currentUser = null
+            authService.deleteTokens()
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(login.pending, (state) => {
@@ -30,6 +37,7 @@ const authSlice = createSlice({
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.currentUser = action.payload
+                authService.setTokens(action.payload.accessToken)
                 state.isFetching = false
             })
             .addDefaultCase((state, action) => {
@@ -45,9 +53,9 @@ const authSlice = createSlice({
     }
 });
 
-const {reducer: authReducer} = authSlice;
+const {reducer: authReducer, actions:{logout}} = authSlice;
 
-const authActions = {login}
+const authActions = {login, logout}
 
 
 export {authActions, authReducer}

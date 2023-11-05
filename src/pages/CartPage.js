@@ -38,6 +38,9 @@ const TopButton = styled.button`
   background-color: ${(props) =>
           props.type === "filled" ? "black" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
+  &:disabled{
+    background-color: grey;
+  }
 `;
 
 const TopTexts = styled.div`
@@ -157,12 +160,16 @@ const Button = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
+  &:disabled{
+    background-color: grey;
+  }
 `;
 
 
 const CartPage = () => {
     const {products, totalPrice} = useSelector(state => state.cartReducer);
-    console.log(products, "cartReducer");
+    const {currentUser} = useSelector(state => state.authReducer);
+
     const [stripeToken, setStripeToken] = useState(null);
     const navigate = useNavigate()
 
@@ -171,7 +178,8 @@ const CartPage = () => {
         setStripeToken(token)
     }
 
-// TO DO add check for sign in user for token
+
+
     useEffect(() => {
         const makeRequest = async () => {
             try {
@@ -199,7 +207,7 @@ const CartPage = () => {
                         <TopText>Shopping Bag(2)</TopText>
                         <TopText>Your Wishlist (0)</TopText>
                     </TopTexts>
-                    <TopButton type="filled">CHECKOUT NOW</TopButton>
+                    <TopButton type="filled" disabled={!currentUser}>CHECKOUT NOW</TopButton>
                 </Top>
                 <Bottom>
                     <Info>
@@ -260,8 +268,14 @@ const CartPage = () => {
                             amount={totalPrice * 100}
                             token={onToken}
                             stripeKey={constants.STRIPE_PUBLIC_KEY}>
-                            <Button style={{cursor: 'pointer'}}>CHECKOUT NOW!</Button>
+                            <Button
+                                style={{cursor: 'pointer'}}
+                                disabled={!currentUser}
+                            >CHECKOUT NOW!</Button>
                         </StripeCheckout>
+                        {
+                            !currentUser && <span style={{color:"red"}}>Please sign in for order</span>
+                        }
                     </Summary>
                 </Bottom>
             </Wrapper>
