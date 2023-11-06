@@ -162,6 +162,7 @@ const Button = styled.button`
 
 const CartPage = () => {
     const {products, totalPrice} = useSelector(state => state.cartReducer);
+    console.log(products, "cartReducer");
     const [stripeToken, setStripeToken] = useState(null);
     const navigate = useNavigate()
 
@@ -170,7 +171,7 @@ const CartPage = () => {
         setStripeToken(token)
     }
 
-
+// TO DO add check for sign in user for token
     useEffect(() => {
         const makeRequest = async () => {
             try {
@@ -251,8 +252,8 @@ const CartPage = () => {
                             <SummaryItemPrice>$ {totalPrice}</SummaryItemPrice>
                         </SummaryItem>
                         <StripeCheckout
-                            name="DM. SHOP"
-                            image="https://avatars.githubusercontent.com/u/1486366?v=4"
+                            name="DM.SHOP"
+                            // image="https://avatars.githubusercontent.com/u/1486366?v=4"
                             billingAddress
                             shippingAddress
                             description={`Your total is $${totalPrice}`}
