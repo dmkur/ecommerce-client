@@ -13,11 +13,8 @@ const OrdersPage = () => {
     const [orderId, setOrderId] = useState(null);
     const navigate = useNavigate()
 
-
-
     useEffect(() => {
         const createOrder = async () => {
-
             try {
                 const {data: res} = await orderService.createOrder({
                     userId: currentUser._id,
@@ -36,7 +33,7 @@ const OrdersPage = () => {
     }, [cart, data, currentUser]);
 
     const handleClick = () => {
-        navigate('/')
+        navigate('/');
     };
 
     return (
