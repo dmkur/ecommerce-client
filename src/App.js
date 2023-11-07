@@ -2,12 +2,9 @@ import {CartPage, HomePage, LoginPage, ProductPage, ProductList, RegisterPage, O
 import {Routes, Route} from "react-router-dom";
 import {MainLayout} from "./layouts";
 
-
 const App = () => {
-    return (
-        
-        <Routes>
-            
+    return (        
+        <Routes>            
             <Route path={'/'} element={<MainLayout/>}>
                 <Route index element={<HomePage/>}/>
                 <Route path={'products'} element={<ProductList/>}/>
