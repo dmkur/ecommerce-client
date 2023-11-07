@@ -88,8 +88,7 @@ const LoginPage = () => {
     useEffect(() => {
         if (currentUser) navigate('/')
     }, [currentUser])
-
-
+  
     const handleLogin = (e) => {
         e.preventDefault()
         dispatch(authActions.login({username, password}))

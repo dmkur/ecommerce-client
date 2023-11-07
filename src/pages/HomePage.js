@@ -3,7 +3,7 @@ import {Announcement, Categories, Footer, Navbar, Newsletter, Products, Slider} 
 
 const HomePage = () => {
     return (
-        <div>
+        <>
             <Announcement/>
             <Navbar/>
             <Slider/>
@@ -11,7 +11,7 @@ const HomePage = () => {
             <Products/>
             <Newsletter/>
             <Footer/>
-        </div>
+        </>
     )
 };
 
