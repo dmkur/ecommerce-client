@@ -74,7 +74,9 @@ const Icon = styled.div`
 
 const Product = ({ item }) => {
   const dispatch = useDispatch();
-  const {category} = useParams()
+  console.log(item);
+  // const {category:_id} = useParams()
+  // console.log(category, ":P:");
   
 
   const addProduct = () => {   
@@ -90,7 +92,7 @@ const Product = ({ item }) => {
           <ShoppingCartOutlined onClick={addProduct} />
         </Icon>
         <Icon>
-          <Link to={`/products/${category}/${item._id}`}>
+          <Link to={`/products/${item.categories[1]}/${item._id}`}>
             <SearchOutlined />
           </Link>
         </Icon>

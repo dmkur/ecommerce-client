@@ -7,6 +7,6 @@ export * from "./Products";
 export * from "./Product";
 export * from "./Newsletter";
 export * from "./Footer";
-export * from "./CustonScroll";
+export * from "./CustomScroll";
 export * from "./Login";
 export * from "./Register";
