@@ -40,7 +40,7 @@ const Option = styled.option`
   cursor: pointer;
 `
 
-const ProductList = () => {
+const ProductListPage = () => {
     const {category:cat} = useParams()
 
     const [sort, setSort] = useState('newest');
@@ -97,4 +97,4 @@ const ProductList = () => {
     )
 };
 
-export {ProductList}
+export {ProductListPage}

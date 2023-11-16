@@ -116,7 +116,7 @@ const Button = styled.button`
   }
 `;
 
-const ProductPage = () => {
+const SingleProductPage = () => {
     const {id} = useParams()
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
@@ -150,8 +150,6 @@ const ProductPage = () => {
 
     return (
         <Container>
-           
-
             <Wrapper>
                 <ImgContainer>
                     <Img src={product.img}/>
@@ -192,4 +190,4 @@ const ProductPage = () => {
     )
 };
 
-export {ProductPage}
+export {SingleProductPage}
