@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Footer, Navbar } from "../components";
+
 import { Add, Remove, Clear } from "@mui/icons-material";
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
@@ -165,7 +165,7 @@ const Button = styled.button`
 `;
 
 
-const CartPage = () => {
+const ShopingBagPage = () => {
   const { products, totalPrice } = useSelector((state) => state.cartReducer);
   console.log(products, "PRODUCTS");
   const { currentUser } = useSelector((state) => state.authReducer);
@@ -199,8 +199,7 @@ const CartPage = () => {
   }
 
   return (
-    <Container>
-      <Navbar />
+    <Container>     
 
       <Wrapper>
         <Title>YOUR BAG</Title>
@@ -290,9 +289,9 @@ const CartPage = () => {
           </Summary>
         </Bottom>
       </Wrapper>
-      <Footer />
+      
     </Container>
   );
 };
 
-export { CartPage };
+export { ShopingBagPage };

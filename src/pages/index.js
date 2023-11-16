@@ -1,4 +1,4 @@
-export * from "./CartPage";
+export * from "./ShopingBagPage";
 export * from "./HomePage";
 export * from "./ProductListPage";
 export * from "./SingleProductPage";

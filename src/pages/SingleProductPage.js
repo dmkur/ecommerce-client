@@ -117,7 +117,7 @@ const Button = styled.button`
 `;
 
 const SingleProductPage = () => {
-    const {id} = useParams()
+    const {id} = useParams()   
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
     const [color, setColor] = useState('');
@@ -142,7 +142,6 @@ const SingleProductPage = () => {
     }
 
     const handleClick = () => {
-        //      update cart
         dispatch(
             cartActions.addProduct({...product, quantity, color, size})
         )
