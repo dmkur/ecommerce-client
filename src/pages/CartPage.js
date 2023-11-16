@@ -232,7 +232,7 @@ const CartPage = () => {
                       </ProductId>
                       <ProductColor color={product.color} />
                       <ProductSize>
-                        <b>Size:</b> {product.size}
+                        <b>Size:</b> {product.size[0] || product.size}
                       </ProductSize>
                     </Details>
                   </ProductDetail>
@@ -246,7 +246,8 @@ const CartPage = () => {
                       $ {product.price * product.quantity}
                     </ProductPrice>
                   </PriceDetail>
-                  <Clear onClick={()=>deleteCartitem(product._id)}/>
+                  <Clear onClick={()=>deleteCartitem(product._id)} style={{
+                    marginRight: "20px",marginTop: "20px",cursor: "pointer"}}/>
                 </Product>
               ))}
             <Hr />
