@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Announcement, Footer, Navbar, Newsletter} from "../components";
+
 import {Add, Remove} from "@mui/icons-material";
 import {mobile} from "../responsive";
 import {useParams} from "react-router-dom";
@@ -150,7 +150,7 @@ const ProductPage = () => {
 
     return (
         <Container>
-            <Navbar/>
+           
 
             <Wrapper>
                 <ImgContainer>
@@ -187,9 +187,7 @@ const ProductPage = () => {
                         </Button>
                     </AddContainer>
                 </InfoContainer>
-            </Wrapper>
-            <Newsletter/>
-            <Footer/>
+            </Wrapper>            
         </Container>
     )
 };

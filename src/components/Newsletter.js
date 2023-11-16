@@ -4,13 +4,13 @@ import {mobile} from "../responsive";
 
 
 const Container = styled.div`
-  height: 60vh;
+  height: 40vh;
   background-color: #fcf5f5;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  ${mobile({height:"50vh"})}
+  ${mobile({height:"35vh"})}
 `
 
 const Tittle = styled.h1`

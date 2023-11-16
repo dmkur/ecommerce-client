@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Navbar, Products, Newsletter, Footer} from "../components";
+import {Products} from "../components";
 import {mobile} from "../responsive";
 import { useParams} from "react-router-dom";
 import {useState} from "react";
@@ -41,10 +41,6 @@ const Option = styled.option`
 `
 
 const ProductList = () => {
-    // альтернативний медот пошуку по URL
-    // const location = useLocation()
-    // const cat = location.pathname.split('/')[2]
-
     const {category:cat} = useParams()
 
     const [sort, setSort] = useState('newest');
@@ -60,8 +56,7 @@ const ProductList = () => {
     }
 
     return (
-        <Container>
-            <Navbar/>           
+        <Container>      
             <Tittle>{cat}</Tittle>
             <FilterContainer>
                 <Filter>
@@ -96,11 +91,8 @@ const ProductList = () => {
                         <Option value={'desc'}>Price (desc)</Option>
                     </Select>
                 </Filter>
-
             </FilterContainer>
-            <Products cat={cat} filters={filters} sort={sort}/>
-            <Newsletter/>
-            <Footer/>
+            <Products cat={cat} filters={filters} sort={sort}/>           
         </Container>
     )
 };

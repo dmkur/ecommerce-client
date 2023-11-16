@@ -1,18 +1,13 @@
-import {Announcement, Categories, Footer, Navbar, Newsletter, Products, Slider} from "../components";
-
+import { Categories, Products, Slider } from "../components";
 
 const HomePage = () => {
-    return (
-        <>
-            <Announcement/>
-            <Navbar/>
-            <Slider/>
-            <Categories/>
-            <Products/>
-            <Newsletter/>
-            <Footer/>
-        </>
-    )
+  return (
+    <>     
+      <Slider />
+      <Categories />
+      <Products />
+    </>
+  );
 };
 
-export {HomePage}
+export { HomePage };
