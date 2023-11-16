@@ -4,10 +4,10 @@ import {
   SearchOutlined,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {cartActions} from "../redux"
+import { cartActions } from "../redux";
 
 const Info = styled.div`
   opacity: 0;
@@ -74,13 +74,9 @@ const Icon = styled.div`
 
 const Product = ({ item }) => {
   const dispatch = useDispatch();
-  console.log(item);
-  // const {category:_id} = useParams()
-  // console.log(category, ":P:");
-  
 
-  const addProduct = () => {   
-    dispatch(cartActions.addProduct({...item, quantity: 1}))
+  const addProduct = () => {
+    dispatch(cartActions.addProduct({ ...item, quantity: 1 }));
   };
 
   return (
@@ -92,7 +88,7 @@ const Product = ({ item }) => {
           <ShoppingCartOutlined onClick={addProduct} />
         </Icon>
         <Icon>
-          <Link to={`/products/${item.categories[1]}/${item._id}`}>
+          <Link to={`/products/${item.categories[0] || "all"}/${item._id}`}>
             <SearchOutlined />
           </Link>
         </Icon>
