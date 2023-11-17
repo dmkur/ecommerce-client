@@ -76,6 +76,7 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 200px;
+   ${mobile({ maxWidth: "200px", minWidth: "200px"})}
 `;
 
 const Details = styled.div`
@@ -83,11 +84,14 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+   ${mobile({ padding: "10px" })}
 `;
 
 const ProductName = styled.span``;
 
-const ProductId = styled.span``;
+const ProductId = styled.span`
+word-break: break-word
+;`;
 
 const ProductColor = styled.div`
   width: 20px;
