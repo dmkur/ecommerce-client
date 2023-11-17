@@ -4,7 +4,6 @@ import {
   SearchOutlined,
   ShoppingCartOutlined,
 } from "@mui/icons-material";
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../redux";
