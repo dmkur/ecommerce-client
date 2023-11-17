@@ -10,7 +10,7 @@ const Container = styled.div`
   ${mobile({flexDirection:"column ",  padding: '0'})}
 `
 
-const Categories = () => {
+const CategoryList = () => {
     return (
         <Container>
             {categories.map(item =>
@@ -20,4 +20,4 @@ const Categories = () => {
     )
 };
 
-export {Categories}
+export {CategoryList}

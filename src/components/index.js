@@ -1,5 +1,5 @@
 export * from "./Announcement";
-export * from "./Categories";
+export * from "./CategoryList";
 export * from "./CategoryItem";
 export * from "./CustomScroll";
 export * from "./Footer";

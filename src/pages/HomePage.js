@@ -1,10 +1,10 @@
-import { Categories, Products, Slider } from "../components";
+import { CategoryList, Products, Slider } from "../components";
 
 const HomePage = () => {
   return (
     <>     
       <Slider />
-      <Categories />
+      <CategoryList />
       <Products />
     </>
   );
