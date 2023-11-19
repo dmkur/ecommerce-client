@@ -1,13 +1,17 @@
-import {Outlet} from "react-router-dom";
-import { CustomScroll } from "../components";
+import { Outlet } from "react-router-dom";
+import { CustomScroll, Footer, Newsletter, Announcement, Navbar } from "../components";
 
 const MainLayout = () => {
-    return (
-        <div>
-            <CustomScroll/>
-            <Outlet/>
-        </div>
-    )
+  return (
+    <>
+      <CustomScroll />
+      <Navbar/>
+      <Announcement />
+      <Outlet />
+      <Newsletter />
+      <Footer />
+    </>
+  );
 };
 
-export {MainLayout}
+export { MainLayout };

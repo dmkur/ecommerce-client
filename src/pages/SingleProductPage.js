@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Announcement, Footer, Navbar, Newsletter} from "../components";
+
 import {Add, Remove} from "@mui/icons-material";
 import {mobile} from "../responsive";
 import {useParams} from "react-router-dom";
@@ -116,8 +116,8 @@ const Button = styled.button`
   }
 `;
 
-const ProductPage = () => {
-    const {id} = useParams()
+const SingleProductPage = () => {
+    const {id} = useParams()   
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
     const [color, setColor] = useState('');
@@ -142,7 +142,6 @@ const ProductPage = () => {
     }
 
     const handleClick = () => {
-        //      update cart
         dispatch(
             cartActions.addProduct({...product, quantity, color, size})
         )
@@ -150,8 +149,6 @@ const ProductPage = () => {
 
     return (
         <Container>
-            <Navbar/>
-
             <Wrapper>
                 <ImgContainer>
                     <Img src={product.img}/>
@@ -187,11 +184,9 @@ const ProductPage = () => {
                         </Button>
                     </AddContainer>
                 </InfoContainer>
-            </Wrapper>
-            <Newsletter/>
-            <Footer/>
+            </Wrapper>            
         </Container>
     )
 };
 
-export {ProductPage}
+export {SingleProductPage}
