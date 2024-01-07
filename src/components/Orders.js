@@ -18,7 +18,7 @@ const Orders = () => {
 
             try {
                 const {data: res} = await orderService.createOrder({
-                    userId: currentUser._id,
+                    userId: currentUser.user,
                     products: cart.map((item) => ({
                         productId: item._id,
                         quantity: item.quantity

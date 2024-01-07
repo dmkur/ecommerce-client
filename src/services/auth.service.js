@@ -7,7 +7,7 @@ const authService = {
     login:(user) => axiosService.post(urls.auth, user),
     getUserById:(id) => axiosServiceWithToken.get(urls.users+`/find/${id}` ),
 
-    setTokens: (access) => localStorage.setItem(access_token,access),
+    setTokens: (token) => localStorage.setItem(access_token,token),
     getAccessToken: () => localStorage.getItem(access_token),
     deleteTokens: () => localStorage.removeItem(access_token),
 }

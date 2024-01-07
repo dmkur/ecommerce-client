@@ -12,7 +12,6 @@ const login = createAsyncThunk(
     async (user, {rejectWithValue}) => {
         try {
             const {data} = await authService.login(user);
-            console.log(data,"SLICE")
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -37,7 +36,7 @@ const authSlice = createSlice({
             })
             .addCase(login.fulfilled, (state, action) => {
                 state.currentUser = action.payload
-                authService.setTokens(action.payload.accessToken)
+                authService.setTokens(action.payload.access_token)
                 state.isFetching = false
             })
             .addDefaultCase((state, action) => {
