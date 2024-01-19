@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { Add, Remove, Clear } from "@mui/icons-material";
-import { mobile, medium } from "../responsive";
+import { mobile, medium, tablet } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
@@ -151,10 +151,13 @@ const Summary = styled.div`
   border-radius: 10px;
   padding: 20px;
   height: 50vh;
+
+  ${tablet({ height: "fit-content" })}
 `;
 
 const SummaryTitle = styled.h1`
   font-weight: 200;
+  ${medium({ fontSize: "25px" })}
 `;
 
 const SummaryItem = styled.div`
@@ -163,6 +166,7 @@ const SummaryItem = styled.div`
   justify-content: space-between;
   font-weight: ${(props) => props.type === "total" && "500"};
   font-size: ${(props) => props.type === "total" && "24px"};
+  ${tablet({ margin: "15px 0" })};
 `;
 
 const SummaryItemText = styled.span``;
@@ -258,7 +262,14 @@ const ShopingBagPage = () => {
                     </ProductPrice>
                   </PriceDetail>
                   <ClearDiv>
-                    <Clear onClick={() => deleteCartitem(product._id)} />
+                    <Clear
+                      onClick={() => deleteCartitem(product._id)}
+                      style={{
+                        cursor: "pointer",
+                        marginRight: "20px",
+                        marginTop: "20px",
+                      }}
+                    />
                   </ClearDiv>
                 </Product>
               ))}
