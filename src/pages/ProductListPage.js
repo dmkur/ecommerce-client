@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Products } from "../components";
-import { mobile } from "../responsive";
+import { mobile, tablet, medium } from "../responsive";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
@@ -14,6 +14,8 @@ const FilterContainer = styled.div`
   margin: 20px;
   display: flex;
   justify-content: space-between;
+  ${tablet({ margin: "0" })}
+  ${medium({ display: "block" })}
   ${mobile({ margin: " 0" })}
 `;
 const Filter = styled.div`

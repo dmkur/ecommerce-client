@@ -79,7 +79,7 @@ const MenuItem = styled.div``
 
 const Login = () => {
     const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const {currentUser,error, isFetching} = useSelector(state => state.authReducer);
 
     const dispatch = useDispatch();
@@ -91,7 +91,7 @@ const Login = () => {
   
     const handleLogin = (e) => {
         e.preventDefault()
-        dispatch(authActions.login({username, password}))
+        dispatch(authActions.login({ email, password}))
     }
 
     return (
@@ -99,7 +99,7 @@ const Login = () => {
             <Wrapper>
                 <Title>SIGN IN</Title>
                 <Form>
-                    <Input placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
+                    <Input placeholder="email" onChange={(e) => setEmail(e.target.value)}/>
                     <Input placeholder="password" type={"password"} onChange={(e) => setPassword(e.target.value)}/>
                     <Button onClick={handleLogin} disabled={isFetching}>LOGIN</Button>
                     {error && <ERROR>Something went wrong....</ERROR>}

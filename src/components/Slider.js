@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import { sliderItems } from "../data";
-import { mobile } from "../responsive";
+import { mobile, medium, tablet } from "../responsive";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -12,7 +12,8 @@ const Container = styled.div`
 
   position: relative;
   overflow: hidden;
-  ${mobile({ display: "none " })}
+  ${tablet({ height: "70vh" })};
+  ${mobile({ height: "50vh" })};
 `;
 const Wrapper = styled.div`
   height: 100%;
@@ -25,24 +26,36 @@ const Image = styled.img`
   height: 70%;
   width: 80%;
   flex: 1;
+  ${tablet({ flex: "2" })};
 `;
 
 const ImgContainer = styled.div`
   flex: 1;
+  ${tablet({ flex: "0.9" })};
+  ${mobile({ display: "none " })}
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 50px;
+  ${tablet({ flex: "0.5", padding: "20px" })};
+  ${medium({ flex: "0", padding: "10px" })};
+  ${mobile({ flex: "1", padding: "15px", textAlign: "center" })};
 `;
 const Tittle = styled.h1`
   font-size: 70px;
+  ${tablet({ fontSize: "50px" })};
+  ${medium({ fontSize: "30px" })};
 `;
 const Desc = styled.p`
   margin: 50px 0;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;
+
+  ${tablet({ fontSize: "15px", margin: "30px 0" })};
+  ${medium({ margin: "20px 0" })};
+  ${mobile({ margin: "20px 20px" })};
 `;
 const Button = styled.button`
   padding: 10px;
@@ -68,6 +81,19 @@ const Arrow = styled.div`
   cursor: pointer;
   opacity: 0.7;
   z-index: 2;
+  user-select: none;
+  ${tablet({
+    bottom: "5%",
+    left: "35%",
+    top: "auto",
+  })}
+  ${mobile({
+    width: "30px",
+    height: "30px",
+    bottom: "15%",
+    left: "35%",
+    top: "auto",
+  })}
 `;
 const Arrow2 = styled.div`
   display: flex;
@@ -87,6 +113,19 @@ const Arrow2 = styled.div`
   cursor: pointer;
   opacity: 0.7;
   z-index: 2;
+  user-select: none;
+  ${tablet({
+    bottom: "5%",
+    right: "35%",
+    top: "auto",
+  })}
+  ${mobile({
+    width: "30px",
+    height: "30px",
+    bottom: "15%",
+    right: "35%",
+    top: "auto",
+  })}
 `;
 const Slide = styled.div`
   height: 100vh;
@@ -94,6 +133,8 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
   background-color: #${(props) => props.bg};
+  ${tablet({ height: "70vh" })};
+  ${mobile({ height: "50vh" })};
 `;
 
 const Slider = () => {
@@ -115,7 +156,7 @@ const Slider = () => {
         {sliderItems.map((item) => (
           <Slide bg={`${item.bg}`} key={item.id}>
             <ImgContainer>
-              <Image src={item.img} />
+              <Image src={item.img} alt="logo" />
             </ImgContainer>
             <InfoContainer>
               <Tittle>{item.title}</Tittle>

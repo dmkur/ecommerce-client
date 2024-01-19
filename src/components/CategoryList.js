@@ -1,23 +1,24 @@
 import styled from "styled-components";
-import {categories} from "../data"
-import {CategoryItem} from "./CategoryItem";
-import {mobile} from "../responsive";
+import { categories } from "../data";
+import { CategoryItem } from "./CategoryItem";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   display: flex;
   padding: 20px;
   justify-content: space-between;
-  ${mobile({flexDirection:"column ",  padding: '0'})}
-`
+  
+  ${mobile({ flexDirection: "column ", padding: "0" })}
+`;
 
 const CategoryList = () => {
-    return (
-        <Container>
-            {categories.map(item =>
-                <CategoryItem item={item} key={item.id}/>
-            )}
-        </Container>
-    )
+  return (
+    <Container>
+      {categories.map((item) => (
+        <CategoryItem item={item} key={item.id} />
+      ))}
+    </Container>
+  );
 };
 
-export {CategoryList}
+export { CategoryList };
