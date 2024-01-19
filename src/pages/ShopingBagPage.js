@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { Add, Remove, Clear } from "@mui/icons-material";
-import { mobile } from "../responsive";
+import { mobile, medium } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 20px;
-  ${mobile({ padding: "10px" })}
+  ${medium({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -28,6 +28,8 @@ const Top = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+
+  ${medium({ padding: "15px 0" })}
 `;
 
 const TopButton = styled.button`
@@ -41,6 +43,7 @@ const TopButton = styled.button`
   &:disabled {
     background-color: grey;
   }
+  ${medium({ padding: "5px", fontWeight: "400" })}
 `;
 
 const TopTexts = styled.div`
@@ -55,7 +58,7 @@ const TopText = styled.span`
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
-  ${mobile({ flexDirection: "column" })}
+  ${medium({ flexDirection: "column" })}
 `;
 
 const Info = styled.div`
@@ -76,7 +79,7 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 200px;
-   ${mobile({ maxWidth: "200px", minWidth: "200px"})}
+  ${mobile({ maxWidth: "200px", minWidth: "200px" })}
 `;
 
 const Details = styled.div`
@@ -84,14 +87,14 @@ const Details = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-   ${mobile({ padding: "10px" })}
+  ${mobile({ padding: "10px" })}
 `;
 
 const ProductName = styled.span``;
 
 const ProductId = styled.span`
-word-break: break-word
-;`;
+  word-break: break-word;
+`;
 
 const ProductColor = styled.div`
   width: 20px;
@@ -108,6 +111,8 @@ const PriceDetail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  ${medium({ flex: "0" })};
+  ${mobile({ flexDirection: "row", justifyContent: "space-around" })}
 `;
 
 const ProductAmountContainer = styled.div`
@@ -132,6 +137,12 @@ const Hr = styled.hr`
   background-color: #eee;
   border: none;
   height: 1px;
+`;
+const ClearDiv = styled.div`
+  marginright: "20px";
+  margintop: "20px";
+  cursor: "pointer";
+  ${mobile({ textAlign: "center" })}
 `;
 
 const Summary = styled.div`
@@ -168,12 +179,11 @@ const Button = styled.button`
   }
 `;
 
-
 const ShopingBagPage = () => {
   const { products, totalPrice } = useSelector((state) => state.cartReducer);
   console.log(products, "PRODUCTS");
   const { currentUser } = useSelector((state) => state.authReducer);
-  const dispatch= useDispatch()
+  const dispatch = useDispatch();
 
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
@@ -197,14 +207,12 @@ const ShopingBagPage = () => {
     stripeToken && makeRequest();
   }, [stripeToken, totalPrice, navigate, products]);
 
-  const deleteCartitem = (id)=>{
-    console.log(id,"deleteCartitem");
-    dispatch(cartActions.deleteProduct(id))
-  }
+  const deleteCartitem = (id) => {
+    dispatch(cartActions.deleteProduct(id));
+  };
 
   return (
-    <Container>     
-
+    <Container>
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
@@ -249,8 +257,9 @@ const ShopingBagPage = () => {
                       $ {product.price * product.quantity}
                     </ProductPrice>
                   </PriceDetail>
-                  <Clear onClick={()=>deleteCartitem(product._id)} style={{
-                    marginRight: "20px",marginTop: "20px",cursor: "pointer"}}/>
+                  <ClearDiv>
+                    <Clear onClick={() => deleteCartitem(product._id)} />
+                  </ClearDiv>
                 </Product>
               ))}
             <Hr />
@@ -293,7 +302,6 @@ const ShopingBagPage = () => {
           </Summary>
         </Bottom>
       </Wrapper>
-      
     </Container>
   );
 };
